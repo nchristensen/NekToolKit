@@ -52,11 +52,16 @@ function patch_plot(x, y, z, filename, varargin)
 
     a1=0;
     a2=0;
+    interval=5;
+    start=5;
+    stop=95;
+    level_weights = [start:interval:stop]/100;
+    levels = (1-level_weights)*zmin + level_weights*zmax;
     for i = 1:size(z, 3)
         if strcmp(plot_type, 'surface')
             surface(x(:,:,i), y(:,:,i), z(:,:,i),'FaceColor','interp','EdgeColor','none'); hold on
         elseif strcmp(plot_type, 'contour')
-            contour(x(:,:,i), y(:,:,i), z(:,:,i)); hold on
+            contour(x(:,:,i), y(:,:,i), z(:,:,i),levels); hold on
         else
             error('Unrecognized plot type');
         end;
