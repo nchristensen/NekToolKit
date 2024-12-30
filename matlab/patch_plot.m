@@ -53,8 +53,8 @@ function patch_plot(x, y, z, filename, varargin)
     a1=0;
     a2=0;
     interval=5;
-    start=5;
-    stop=95;
+    start=interval;
+    stop=100 - interval;
     level_weights = [start:interval:stop]/100;
     levels = (1-level_weights)*zmin + level_weights*zmax;
     for i = 1:size(z, 3)
